@@ -116,10 +116,6 @@ func parsePayload(r io.ReadSeeker, extractFiles []string) {
 	if err != nil {
 		log.Fatalf("Failed to parse the manifest: %s\n", err.Error())
 	}
-	// only support full payloads!
-	if *manifest.MinorVersion != 0 {
-		log.Fatalf("Delta payloads are not supported, please use a full payload file\n")
-	}
 	// print manifest info
 	log.Printf("Block size: %d, Partition count: %d\n",
 		*manifest.BlockSize, len(manifest.Partitions))
